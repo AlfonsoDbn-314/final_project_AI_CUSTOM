@@ -78,7 +78,7 @@ Se implemento persistencia real usando Redis como almacen de contexto por usuari
 |---|---|
 | backend/context_store.py | ContextStore en memoria (implementacion base) |
 | backend/context_store_redis.py | ContextStoreRedis con persistencia real en Redis |
-| backend/cag.py | apply_context: enriquece respuesta con contexto del usuario |
+| backend/cag.py | apply_context enriquece respuesta con contexto del usuario |
 | backend/assistant.py | Pipeline RAG + CAG integrado via inyeccion de dependencia |
 | backend/server.py | Endpoints /api/ask y /api/context conectados al modulo CAG |
 
@@ -92,11 +92,39 @@ Redis debe estar corriendo localmente en puerto 6379.
 
 ---
 
-## Ejecutar backend
+## Ejecutar el sistema completo
+
+### Paso 1 - Iniciar Redis
+Verificar que Redis esta corriendo:
+
+    redis-cli ping
+    → PONG
+
+### Paso 2 - Iniciar backend
 
     PYTHONPATH=. python3 -m backend.server
 
 Backend disponible en http://127.0.0.1:8000
+
+### Paso 3 - Abrir frontend
+Abrir el archivo en el navegador:
+
+    frontend/index.html
+
+O desde la terminal:
+
+    start frontend\index.html
+
+El frontend CAG Lab estara disponible en el navegador conectado al backend en puerto 8000.
+
+### Demo rapida del CAG
+1. Abrir frontend con usuario: luis
+2. Guardar contexto via API:
+       POST /api/context {"user_id":"luis","key":"audience","value":"explicar como principiante"}
+3. Preguntar: Que es CAG?
+4. La respuesta incluira [audience: explicar como principiante] y context_used: ["audience"]
+
+---
 
 ## Ejecutar pruebas base
 
