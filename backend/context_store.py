@@ -1,9 +1,16 @@
-"""Base placeholder for student implementation."""
+"""Implementación CAG: almacenamiento de contexto por usuario en memoria."""
 
 
 class ContextStore:
+    def __init__(self):
+        self._store = {}
+
     def save(self, user_id, key, value):
-        raise NotImplementedError("CAG context storage is not implemented yet")
+        if user_id not in self._store:
+            self._store[user_id] = {}
+        self._store[user_id][key] = value
+        return True
 
     def list_for_user(self, user_id):
-        raise NotImplementedError("CAG context retrieval is not implemented yet")
+        entries = self._store.get(user_id, {})
+        return [{"key": k, "value": v} for k, v in entries.items()]
