@@ -172,3 +172,7 @@ Ver carpeta docs/evidencias/ con capturas de:
 - Pull Request mergeado
 - Historial de commits incrementales
 - Tests con Redis
+## Vista del Frontend
+
+![CAG Lab Frontend](docs/evidencias/evidencia-frontend-mejorado.png)
+
