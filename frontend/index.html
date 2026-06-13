@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -15,27 +15,44 @@
       </section>
 
       <section class="workspace">
-        <form id="ask-form" class="card ask-card">
-          <label for="user-id">Usuario</label>
-          <input id="user-id" name="user_id" value="student-01" />
+        <div class="left-col">
+          <form id="ask-form" class="card ask-card">
+            <label for="user-id">Usuario</label>
+            <input id="user-id" name="user_id" value="student-01" />
 
-          <label for="question">Pregunta</label>
-          <textarea id="question" name="question" rows="5" placeholder="Pregunta sobre RAG, CAG, SDD, BDD o TDD"></textarea>
+            <label for="question">Pregunta</label>
+            <textarea id="question" name="question" rows="4" placeholder="Pregunta sobre RAG, CAG, SDD, BDD o TDD"></textarea>
 
-          <button type="submit">Preguntar al asistente</button>
-        </form>
+            <button type="submit">Preguntar al asistente</button>
+          </form>
+
+          <form id="context-form" class="card context-save-card">
+            <p class="panel-label">Guardar Contexto</p>
+            <h2>Agregar contexto CAG</h2>
+            <label for="ctx-key">Clave</label>
+            <input id="ctx-key" name="key" placeholder="ej: audience, nivel, estilo" />
+            <label for="ctx-value">Valor</label>
+            <input id="ctx-value" name="value" placeholder="ej: explicar como principiante" />
+            <button type="submit">Guardar contexto</button>
+            <p id="ctx-save-msg" class="save-msg"></p>
+          </form>
+        </div>
 
         <aside class="card context-card">
           <p class="panel-label">Panel CAG</p>
-          <h2>Contexto pendiente</h2>
-          <p>Este panel es un punto de partida. Debe mostrar contexto guardado cuando implementes <code>/api/context</code>.</p>
-          <pre id="context-output">Sin contexto cargado.</pre>
+          <h2>Contexto del usuario</h2>
+          <p class="context-hint">El contexto guardado se usa para personalizar respuestas futuras.</p>
+          <div id="context-items" class="context-items">
+            <p class="muted-text">Sin contexto cargado.</p>
+          </div>
         </aside>
       </section>
 
       <section class="card response-card">
         <p class="panel-label">Respuesta</p>
-        <pre id="answer-output">Todavia no hiciste una pregunta.</pre>
+        <div id="answer-output" class="answer-output">
+          <p class="muted-text">Todavia no hiciste una pregunta.</p>
+        </div>
       </section>
     </main>
 
