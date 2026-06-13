@@ -1,19 +1,35 @@
-﻿# Sprint 1 — Análisis y diseño del módulo CAG
+﻿# Sprint 1 - Analisis y Diseno del Modulo CAG
 
-**Duración:** 2026-06-12
-**Objetivo:** Entender el proyecto base y diseñar la solución CAG
+**Fecha:** 2026-06-12
+**Objetivo:** Entender el proyecto base y disenar la solucion CAG
 
-## Historias incluidas
-- US-01 (diseño)
-- US-02 (diseño)
-- US-03 (diseño)
+## Backlog comprometido
+- US-01: Guardar contexto de usuario
+- US-02: Recuperar contexto de usuario
+- US-03: Usar contexto en respuestas
+- US-04: Mantener tests base sin regresiones
 
 ## Tareas realizadas
-- Lectura del código base: server.py, assistant.py, knowledge.py
-- Análisis de los 3 tests de validación para definir el contrato CAG
-- Identificación de los 3 archivos placeholder a implementar
-- Diseño de ContextStore en memoria con dict anidado
-- Diseño del flujo CAG: save → list → apply_context → answer enriquecido
+1. Lectura completa del codigo base: server.py, assistant.py, knowledge.py, cag.py, context_store.py
+2. Analisis de los 3 tests de validacion (test_cag_contract.py) para definir el contrato CAG
+3. Identificacion de los 3 archivos placeholder a implementar
+4. Diseno de ContextStore en memoria con dict anidado _store[user_id][key] = value
+5. Diseno del flujo CAG completo:
+   - POST /api/context → ContextStore.save(user_id, key, value)
+   - GET /api/context → ContextStore.list_for_user(user_id)
+   - POST /api/ask → recuperar contexto + apply_context + respuesta enriquecida
+6. Decision de usar inyeccion de dependencia para evitar importacion circular
+
+## Commits del sprint
+- 8285b31: feat(cag): implement in-memory ContextStore with save and list_for_user
+- 1b95ccb: feat(cag): implement apply_context to enrich answers with user context
 
 ## Resultado
-Arquitectura CAG definida, lista para implementar en Sprint 2.
+Arquitectura CAG disenada e implementacion iniciada. ContextStore y apply_context funcionando.
+
+## Definition of Done
+- [x] ContextStore implementado y probado
+- [x] apply_context implementado y probado
+- [x] test_saves_context_for_user: PASS
+- [x] test_retrieves_context_for_user: PASS
+- [x] test_ask_uses_context_to_influence_later_response: PASS
