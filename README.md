@@ -176,3 +176,8 @@ Ver carpeta docs/evidencias/ con capturas de:
 
 ![CAG Lab Frontend](docs/evidencias/evidencia-frontend-mejorado.png)
 
+
+## Vista del Frontend
+
+![CAG Lab Frontend](docs/evidencias/evidencia-frontend-mejorado.png)
+
