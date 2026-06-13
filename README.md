@@ -1,49 +1,53 @@
-# Proyecto Examen Final - Módulo 3
+﻿# Proyecto Examen Final - Modulo 3
 
-Proyecto base para la evaluación práctica del módulo 3. Los requisitos oficiales están en `Enunciado en la serie II de la evaluación final`.
+**Estudiante:** Miguel Alfonso Dubon - 0900-21-6641
+**Curso:** Inteligencia Artificial - Universidad Mariano Galvez de Guatemala
 
-## Inicio rápido
+## Descripcion
 
-1. Abra la carpeta `ProyectoExamen`.
-2. Ejecute las pruebas base.
-3. Levante el backend.
-4. Abra el frontend para revisar el estado inicial.
+Proyecto monolitico con frontend, backend RAG y modulo CAG integrado. El sistema responde preguntas usando una base documental y enriquece las respuestas con contexto persistente por usuario.
+
+## Modulo CAG implementado
+
+- `backend/context_store.py` - almacenamiento en memoria de contexto por usuario
+- `backend/cag.py` - logica de enriquecimiento de respuestas con contexto
+- `backend/assistant.py` - pipeline integrado RAG + CAG
+
+## Ejecutar backend
+
+    PYTHONPATH=. python3 -m backend.server
+
+El backend queda disponible en http://127.0.0.1:8000
+
+## Ejecutar pruebas base
+
+    PYTHONPATH=. python -m unittest discover -s tests/base -p "test_*.py" -v
+
+## Ejecutar pruebas de validacion
+
+    PYTHONPATH=. python -m unittest discover -s tests/validation -p "test_*.py" -v
+
+## Resultados de pruebas
+
+- tests/base: 3/3 OK
+- tests/validation: 3/3 OK
 
 ## Estructura
 
 | Ruta | Contenido |
 |---|---|
-| `backend/` | Código del servidor y lógica base del asistente. |
-| `frontend/` | Interfaz web estática para interactuar con el backend. |
-| `data/` | Base de conocimiento inicial del proyecto. |
-| `tests/base/` | Pruebas base que deben pasar desde el inicio. |
-| `tests/validation/` | Pruebas de validación de la entrega final. |
-| `docs/` | Espacio para documentación técnica y evidencias del estudiante. |
+| backend/ | Servidor, RAG y modulo CAG |
+| frontend/ | Interfaz web estatica |
+| data/ | Base de conocimiento |
+| tests/base/ | Pruebas base del proyecto |
+| tests/validation/ | Pruebas de validacion CAG |
+| docs/scrum/ | Backlog, Sprint 1 y Sprint 2 |
+| docs/evidencias/ | Capturas del proceso |
+| PROMPTS.md | Registro cronologico de uso de IA |
 
-## Ejecutar pruebas base
+## Proceso
 
-```bash
-./scripts/run_base_tests.sh
-```
-
-Estas pruebas validan que el proyecto inicial funciona correctamente.
-
-## Ejecutar backend
-
-```bash
-PYTHONPATH=. python3 -m backend.server
-```
-
-El backend queda disponible en `http://127.0.0.1:8000`.
-
-## Abrir frontend
-
-Abra `frontend/index.html` en un navegador. También puede servir la carpeta con un servidor estático local si lo prefiere.
-
-## Validación final
-
-```bash
-./test.sh
-```
-
-En el proyecto base, la validación final está destinada a fallar. Debe utilizarse como autoevaluación cuando el trabajo solicitado en el enunciado esté completo.
+- Metodologia: Scrum con 2 sprints
+- Control de versiones: branch develop, PR mergeado a main
+- TDD aplicado: pruebas de contrato definidas antes de implementar
+- Uso de IA registrado en PROMPTS.md
