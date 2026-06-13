@@ -35,3 +35,12 @@
 **Decisión humana:** Acepté la inyección por parámetro como patrón más limpio y mantenible
 **Cambios realizados:** backend/assistant.py y backend/server.py modificados
 **Verificación:** Ejecuté los 6 tests (3 base + 3 validación) y todos pasaron OK
+
+## Entrada 5
+**Fecha:** 2026-06-12
+**Objetivo:** Comprender conceptualmente CAG y su diferencia con RAG
+**Prompt usado:** "Explica la diferencia entre RAG y CAG y por que CAG mejora respuestas futuras"
+**Resumen de respuesta:** RAG recupera documentos externos en cada consulta (estatico por pregunta). CAG guarda contexto acumulativo del usuario entre sesiones: preferencias, historial, decisiones. RAG responde con conocimiento externo, CAG personaliza con conocimiento del usuario.
+**Decision humana:** Entendi que el valor de CAG esta en la persistencia entre turnos, no en recuperar documentos. Por eso el ContextStore guarda estado por user_id y apply_context lo inyecta en cada respuesta posterior.
+**Cambios realizados:** Esta comprension guio el diseno completo del modulo.
+**Verificacion:** El test test_ask_uses_context_to_influence_later_response valida exactamente este comportamiento: guardar contexto en un turno y usarlo en el siguiente.
