@@ -1,163 +1,209 @@
 ﻿:root {
-  --ink: #101418;
-  --muted: #5d6874;
-  --paper: #f6f0e6;
-  --panel: #fffaf0;
-  --accent: #e4572e;
-  --accent-dark: #9d321a;
-  --line: #1f293326;
-  --success: #2d7a4f;
-  --error: #c0392b;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --paper: #ffffff;
+  --panel: #f8fafc;
+  --accent: #6366f1;
+  --accent-dark: #4338ca;
+  --accent-light: #e0e7ff;
+  --line: #e2e8f0;
+  --success: #059669;
+  --error: #dc2626;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 16% 10%, #ffd16655, transparent 28rem),
-    linear-gradient(135deg, #f6f0e6 0%, #e8dfce 100%);
-  font-family: Georgia, "Times New Roman", serif;
+  background: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
 }
 
 .shell {
-  width: min(1120px, calc(100% - 32px));
+  width: min(1100px, calc(100% - 40px));
   margin: 0 auto;
   padding: 48px 0;
 }
 
 .hero {
-  border-left: 8px solid var(--accent);
-  padding-left: 24px;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
 }
 
-.eyebrow, .panel-label {
-  margin: 0 0 8px;
+.eyebrow {
+  display: inline-block;
+  background: var(--accent-light);
   color: var(--accent-dark);
-  font-family: "Courier New", monospace;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
 }
 
-h1, h2 { margin: 0; }
-h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: 0.9; }
-h2 { font-size: 1.3rem; margin-bottom: 12px; }
+.panel-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
 
 .lead {
-  max-width: 720px;
   color: var(--muted);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
+  margin-top: 10px;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
 .workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.7fr);
+  gap: 16px;
 }
 
-.left-col { display: flex; flex-direction: column; gap: 20px; }
+.left-col { display: flex; flex-direction: column; gap: 16px; }
 
 .card {
-  background: color-mix(in srgb, var(--panel) 92%, white 8%);
+  background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 28px;
-  box-shadow: 0 18px 60px #3b2c1b1f;
+  border-radius: 16px;
   padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
 }
 
 label {
   display: block;
-  margin: 14px 0 6px;
-  font-family: "Courier New", monospace;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 16px 0 6px;
 }
+
+label:first-of-type { margin-top: 4px; }
 
 input, textarea {
   width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
   color: var(--ink);
-  background: #fffdf8;
+  background: var(--panel);
   font: inherit;
-  padding: 14px 16px;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  transition: border-color 0.15s;
+  outline: none;
 }
 
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  background: white;
+}
+
+textarea { resize: vertical; }
+
 button {
-  margin-top: 18px;
+  margin-top: 16px;
   width: 100%;
   border: 0;
-  border-radius: 999px;
-  color: #fffaf0;
-  background: var(--ink);
+  border-radius: 10px;
+  color: white;
+  background: var(--accent);
   cursor: pointer;
-  font-family: "Courier New", monospace;
-  font-weight: 700;
-  padding: 14px 18px;
-  transition: background 0.2s;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 11px 18px;
+  transition: background 0.15s, transform 0.1s;
 }
 
 button:hover { background: var(--accent-dark); }
+button:active { transform: scale(0.99); }
 
-.context-hint { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
+.context-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
 
 .context-items { display: flex; flex-direction: column; gap: 8px; }
 
 .context-item {
   display: flex;
-  gap: 10px;
-  align-items: baseline;
-  background: #f0e8d8;
-  border-radius: 12px;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
   padding: 10px 14px;
 }
 
 .ctx-key {
-  font-family: "Courier New", monospace;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent-dark);
-  min-width: 80px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-.ctx-value { font-size: 0.95rem; color: var(--ink); }
+.ctx-value {
+  font-size: 0.92rem;
+  color: var(--ink);
+}
 
-.response-card { margin-top: 20px; }
+.response-card { margin-top: 16px; }
 
 .answer-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin-bottom: 16px;
 }
 
 .context-used-badge, .sources {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
-  font-family: "Courier New", monospace;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted);
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .badge {
-  background: var(--accent);
-  color: white;
+  background: var(--accent-light);
+  color: var(--accent-dark);
   border-radius: 999px;
   padding: 2px 10px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.muted-text { color: var(--muted); margin: 0; }
-.success-text { color: var(--success); font-size: 0.9rem; margin-top: 8px; }
-.error-text { color: var(--error); font-size: 0.9rem; margin-top: 8px; }
-.save-msg { margin-top: 8px; font-size: 0.9rem; }
-
+.muted-text { color: var(--muted); font-size: 0.9rem; }
+.success-text { color: var(--success); font-size: 0.85rem; margin-top: 8px; }
+.error-text { color: var(--error); font-size: 0.85rem; margin-top: 8px; }
+.save-msg { margin-top: 8px; }
 .answer-output { min-height: 60px; }
 
 @media (max-width: 780px) {
