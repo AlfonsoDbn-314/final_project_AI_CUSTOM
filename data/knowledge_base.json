@@ -1,22 +1,52 @@
-[
+﻿[
   {
     "id": "sdd-bdd-tdd",
     "title": "SDD, BDD y TDD",
-    "content": "El curso usa SDD para disenar antes de construir, BDD para expresar comportamiento observable y TDD para escribir pruebas antes de implementar."
+    "content": "El curso usa SDD para disenar antes de construir, BDD para expresar comportamiento observable y TDD para escribir pruebas antes de implementar. SDD produce documentos de diseno antes del codigo. BDD usa escenarios DADO-CUANDO-ENTONCES. TDD sigue el ciclo rojo-verde-refactor."
   },
   {
     "id": "rag",
-    "title": "RAG",
-    "content": "RAG recupera fragmentos de una base documental para responder con conocimiento externo al modelo."
+    "title": "RAG - Retrieval Augmented Generation",
+    "content": "RAG recupera fragmentos de una base documental para responder con conocimiento externo al modelo. Cada consulta es independiente. RAG no recuerda al usuario entre sesiones. Es util para responder preguntas sobre documentos especificos."
   },
   {
     "id": "cag",
-    "title": "CAG",
-    "content": "CAG usa contexto persistente, como preferencias, historial y decisiones del usuario, para mejorar respuestas futuras."
+    "title": "CAG - Context Augmented Generation",
+    "content": "CAG usa contexto persistente, como preferencias, historial y decisiones del usuario, para mejorar respuestas futuras. A diferencia de RAG, CAG acumula informacion del usuario entre sesiones. El contexto se guarda con clave-valor por usuario y se inyecta en cada respuesta posterior."
   },
   {
     "id": "jarvis",
     "title": "Tony Stark y Jarvis",
-    "content": "La IA debe funcionar como Jarvis: asiste y acelera, pero la persona dirige, decide y verifica."
+    "content": "La IA debe funcionar como Jarvis: asiste y acelera, pero la persona dirige, decide y verifica. El estudiante es Tony Stark. La IA es Jarvis. No se acepta la IA como generador autonomo de la solucion completa."
+  },
+  {
+    "id": "scrum",
+    "title": "Scrum y Sprints",
+    "content": "Scrum organiza el trabajo en sprints. Cada sprint tiene un backlog, planificacion, ejecucion y cierre. El backlog lista las historias de usuario priorizadas. Los sprints demuestran avance incremental y verificable."
+  },
+  {
+    "id": "hexagonal",
+    "title": "Arquitectura Hexagonal",
+    "content": "La arquitectura hexagonal separa el dominio de la infraestructura usando puertos y adaptadores. El nucleo de negocio no depende de frameworks ni bases de datos. Facilita pruebas unitarias y cambios de infraestructura sin afectar la logica."
+  },
+  {
+    "id": "redis",
+    "title": "Redis como almacen de contexto",
+    "content": "Redis es una base de datos en memoria de tipo clave-valor. En CAG se usa para persistir el contexto del usuario entre reinicios del servidor. Cada usuario tiene una clave unica y su contexto se serializa como JSON."
+  },
+  {
+    "id": "tdd-ciclo",
+    "title": "Ciclo TDD",
+    "content": "TDD sigue tres pasos: rojo (escribir una prueba que falla), verde (escribir el minimo codigo para que pase) y refactor (mejorar el codigo sin romper las pruebas). Este ciclo garantiza cobertura y diseno limpio."
+  },
+  {
+    "id": "bdd-escenarios",
+    "title": "Escenarios BDD",
+    "content": "BDD expresa el comportamiento del sistema con escenarios DADO-CUANDO-ENTONCES. DADO establece el contexto inicial. CUANDO describe la accion del usuario. ENTONCES define el resultado esperado. Los escenarios son legibles por personas no tecnicas."
+  },
+  {
+    "id": "monolito",
+    "title": "Arquitectura Monolitica",
+    "content": "Un monolito integra frontend, backend y logica en un solo despliegue. Es simple de desarrollar y depurar. El proyecto del curso es un monolito con servidor HTTP en Python, frontend estatico y base de conocimiento JSON."
   }
 ]
